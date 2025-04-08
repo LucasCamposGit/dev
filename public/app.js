@@ -91,27 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function hideAllRepliesContainers() {
-    document.querySelectorAll(".replies-container").forEach(container => {
-      container.classList.remove("max-h-[1000px]");
-      container.classList.add("max-h-0");
-
-      // Update the icon
-      const icon = container.previousElementSibling.querySelector(".show-replies-icon");
-      if (icon) {
-        icon.classList.remove("fa-chevron-up");
-        icon.classList.add("fa-chevron-down");
-      }
-
-      // Update the button text if it exists
-      const span = container.previousElementSibling.querySelector("span");
-      if (span) {
-        const repliesCount = parseInt(span.getAttribute('data-count') || "0");
-        span.textContent = `Show ${repliesCount} ${repliesCount === 1 ? 'reply' : 'replies'}`;
-      }
-    });
-  }
-
   function formatDate(dateString) {
     const date = new Date(dateString);
     const now = new Date();
@@ -232,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const toggleRepliesBtn = document.createElement("button");
         toggleRepliesBtn.className = "text-sm text-gray-500 hover:text-blue-400 mt-2 flex items-center";
         toggleRepliesBtn.innerHTML = `
-          <span data-count="${replies.length}" class="mr-1">Show ${replies.length} ${replies.length === 1 ? 'reply' : 'replies'}</span>
+          <span data-count="${replies.length}" class="mr-1 toggle-span">Show ${replies.length} ${replies.length === 1 ? 'reply' : 'replies'}</span>
           <i class="fas fa-chevron-down show-replies-icon"></i>
         `;
 
@@ -241,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // Find the repliesContainer more reliably - it should be after the noteContent div
           const repliesContainer = noteDiv.querySelector(".replies-container");
           const icon = toggleRepliesBtn.querySelector(".show-replies-icon");
-          const span = toggleRepliesBtn.querySelector("span");
+          const span = toggleRepliesBtn.querySelector(".toggle-span");
           const isOpen = repliesContainer.classList.contains("max-h-[1000px]");
 
           if (isOpen) {
@@ -251,7 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
             icon.classList.add("fa-chevron-down");
             span.textContent = `Show ${replies.length} ${replies.length === 1 ? 'reply' : 'replies'}`;
           } else {
-            hideAllRepliesContainers();
             repliesContainer.classList.remove("max-h-0");
             repliesContainer.classList.add("max-h-[1000px]");
             icon.classList.remove("fa-chevron-down");
