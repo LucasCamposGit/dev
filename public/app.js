@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tweetInput.value = "";
       charCount.textContent = "0 / 280";
 
-      postBtn.innerHTML = 'Tweet';
+      postBtn.innerHTML = 'Take note';
       postBtn.disabled = true;
 
       loadNotes();
