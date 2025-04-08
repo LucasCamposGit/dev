@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Note-Taking</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #e5e7eb;
+    }
+    .toggle-enter {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
+    }
+    .toggle-enter-active {
+      max-height: 500px;
+    }
+    .toggle-exit {
+      max-height: 500px;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
+    }
+    .toggle-exit-active {
+      max-height: 0;
+    }
+  </style>
+</head>
+<body class="min-h-screen p-6 bg-gray-900 text-gray-100">
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6 text-center text-blue-400">Mini Note-Taking</h1>
+    <div class="p-4 rounded-lg shadow-md mb-6 border border-gray-700">
+      <textarea id="tweetInput" class="w-full p-3 border border-none bg-gray-900 text-white rounded mb-2 resize-none focus:outline-none focus:ring-2 focus:ring-gray-800" rows="3" placeholder="What's happening?"></textarea>
+      <div class="flex justify-between items-center mb-2">
+        <div class="text-sm text-gray-400" id="charCount">0 / 280</div>
+        <button id="postBtn" class="w-sm bg-gray-400 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">Post</button>
+      </div>
+    </div>
+    <div id="notesContainer" class="space-y-4"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
