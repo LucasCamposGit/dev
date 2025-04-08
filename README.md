@@ -1,15 +1,63 @@
-# What is this?
+# Mini Note-Taking App with SQLite Backend
 
-The github.dev web-based editor is a lightweight editing experience that runs entirely in your browser. You can navigate files and source code repositories from GitHub, and make and commit code changes.
+This is a simple note-taking application that uses SQLite for data storage and Node.js/Express for the backend.
 
-There are two ways to go directly to a VS Code environment in your browser and start coding:
+## Features
 
-* Press the . key on any repository or pull request.
-* Swap `.com` with `.dev` in the URL. For example, this repo https://github.com/github/dev becomes http://github.dev/github/dev
+- Create notes and replies
+- View all notes and their replies
+- Delete notes (and all associated replies)
+- Character count for posts
+- Persistent storage using SQLite
 
-Preview the gif below to get a quick demo of github.dev in action.
+## Setup Instructions
 
-![github dev](https://user-images.githubusercontent.com/856858/130119109-4769f2d7-9027-4bc4-a38c-10f297499e8f.gif)
+1. Make sure you have Node.js installed on your system
+2. Clone or download this repository
+3. Navigate to the project directory in your terminal
+4. Install dependencies:
 
-# Why?
-It’s a quick way to edit and navigate code. It's especially useful if you want to edit multiple files at a time or take advantage of all the powerful code editing features of Visual Studio Code when making a quick change. For more information, see our [documentation](https://github.co/codespaces-editor-help).
+```bash
+npm install
+```
+
+5. Start the server:
+
+```bash
+npm start
+```
+
+Or for development with auto-restart:
+
+```bash
+npm run dev
+```
+
+6. Open your browser and go to `http://localhost:3000`
+
+## Project Structure
+
+- `server.js` - Main backend application file with Express and SQLite setup
+- `public/` - Frontend files
+  - `index.html` - Main HTML file
+  - `app.js` - Frontend JavaScript for interacting with the API
+- `notes.db` - SQLite database file (created automatically on first run)
+
+## Database Schema
+
+```sql
+CREATE TABLE IF NOT EXISTS notes (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  text TEXT NOT NULL,
+  parent_id INTEGER NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (parent_id) REFERENCES notes (id) ON DELETE CASCADE
+);
+```
+
+## API Endpoints
+
+- `GET /api/notes` - Get all main notes (no parent)
+- `GET /api/notes/:id/replies` - Get replies for a specific note
+- `POST /api/notes` - Create a new note or reply
+- `DELETE /api/notes/:id` - Delete a note and its replies
