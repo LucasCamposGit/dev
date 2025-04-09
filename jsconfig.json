@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@/lib/*": ["src/lib/*"],
+        "@/components/*": ["src/components/*"] 
+      },
+      "jsx": "preserve" 
+    },
+    "include": ["next-env.d.ts", "**/*.js", "**/*.jsx"], // Adjust for .ts/.tsx if using TypeScript
+    "exclude": ["node_modules"]
+  }
+  
+  
