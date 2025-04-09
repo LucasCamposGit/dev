@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./notes.db"
+}
+
+model Note {
+  id         Int      @id @default(autoincrement())
+  text       String
+  parent_id  Int?
+  created_at DateTime @default(now())
+  
+  parent     Note?    @relation("NoteToNote", fields: [parent_id], references: [id], onDelete: Cascade)
+  replies    Note[]   @relation("NoteToNote")
+}

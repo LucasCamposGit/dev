@@ -1,109 +1,83 @@
-/* app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Add custom base styles or component classes here if needed */
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 21, 32, 43;
+  --twitter-blue: #1d9bf0;
+  --border-color: #38444d;
+}
+
 body {
-  background-color: #15202b; /* Original background */
-  color: #ffffff;
-}
-
-.twitter-blue {
-  color: #1d9bf0;
-}
-.twitter-blue-bg {
-  background-color: #1d9bf0;
-}
-.twitter-blue-border {
-  border-color: #1d9bf0;
-}
-
-.note-card {
-  border: 1px solid #38444d;
-  transition: background-color 0.2s;
-  background-color: #192734; /* Slightly different background for cards */
-}
-
-.note-card:hover {
-  background-color: #22303f; /* Hover effect */
+  color: rgb(var(--foreground-rgb));
+  background-color: rgb(var(--background-rgb));
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 .avatar {
   width: 48px;
   height: 48px;
-  background-color: #38444d;
-  border-radius: 9999px; /* Use full roundness */
+  background-color: var(--border-color);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #8899a6;
   font-weight: bold;
-  flex-shrink: 0; /* Prevent shrinking */
 }
 
-.avatar-sm { /* Smaller avatar for replies */
-    width: 32px;
-    height: 32px;
-    font-size: 0.8rem;
+.note-card {
+  border: 1px solid var(--border-color);
+  transition: background-color 0.2s;
 }
 
+.note-card:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
 
 .note-input-area {
-  border-color: #38444d;
-  background-color: transparent; /* Make textarea background transparent */
+  border-color: var(--border-color);
+  background-color: rgb(var(--background-rgb));
 }
+
 .note-input-area:focus {
-  border-color: #1d9bf0;
-  box-shadow: 0 0 0 1px #1d9bf0;
-  outline: none; /* Remove default outline */
+  border-color: var(--twitter-blue);
+  box-shadow: 0 0 0 1px var(--twitter-blue);
 }
 
 .btn-tweet {
-  background-color: #1d9bf0;
+  background-color: var(--twitter-blue);
   color: white;
   border-radius: 9999px;
   font-weight: bold;
   transition: background-color 0.2s;
-  padding: 0.3rem 1rem; /* Adjusted padding */
-  font-size: 0.9rem; /* Slightly smaller font */
 }
-.btn-tweet:hover:not(:disabled) {
+
+.btn-tweet:hover {
   background-color: #1a91da;
 }
+
 .btn-tweet:disabled {
-  background-color: #1a6ea8; /* Use a more distinct disabled color */
-  opacity: 0.6; /* Increase opacity slightly */
+  background-color: #1a6ea8;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
-.action-icons i, .action-icons svg {
+.action-icons i {
   color: #8899a6;
   transition: color 0.2s;
   cursor: pointer;
 }
-.action-icons .group:hover i, .action-icons .group:hover svg {
-  color: #1d9bf0; /* Twitter blue on hover */
-}
-.action-icons .group:hover span {
-    color: #1d9bf0; /* Also color the count */
+
+.action-icons i:hover {
+  color: var(--twitter-blue);
 }
 
 .replies-container {
-  border-left: 2px solid #38444d;
-  transition: max-height 0.3s ease-in-out;
-  overflow: hidden;
+  border-left: 2px solid var(--border-color);
 }
 
-/* Add specific rounded corners */
-.note-list > :first-child {
-    border-top-left-radius: 0.75rem; /* 12px */
-    border-top-right-radius: 0.75rem;
-}
-.note-list > :last-child {
-    border-bottom-left-radius: 0.75rem;
-    border-bottom-right-radius: 0.75rem;
-}
-.note-list > :not(:last-child) {
-    border-bottom: none; /* Avoid double borders */
+.text-blue-400 {
+  color: var(--twitter-blue);
 }
