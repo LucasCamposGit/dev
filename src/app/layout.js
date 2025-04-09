@@ -1,6 +1,6 @@
 // app/layout.js
 import { Inter } from 'next/font/google';
-import './globals.css';
+import '../global.css';
 // Import Font Awesome CSS (make sure @fortawesome/fontawesome-free is installed)
 import '@fortawesome/fontawesome-free/css/all.min.css';
 

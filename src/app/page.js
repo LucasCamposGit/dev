@@ -2,8 +2,8 @@
 'use client'; // This page requires client-side interactivity
 
 import React, { useState, useEffect, useCallback } from 'react';
-import NoteInput from './components/NoteInput';
-import NoteCard from './components/NoteCard';
+import NoteInput from '@/components/NoteInput';
+import NoteCard from '@/components/NoteCard';
 
 export default function HomePage() {
   const [notes, setNotes] = useState([]);

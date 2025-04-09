@@ -1,0 +1,109 @@
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add custom base styles or component classes here if needed */
+body {
+  background-color: #15202b; /* Original background */
+  color: #ffffff;
+}
+
+.twitter-blue {
+  color: #1d9bf0;
+}
+.twitter-blue-bg {
+  background-color: #1d9bf0;
+}
+.twitter-blue-border {
+  border-color: #1d9bf0;
+}
+
+.note-card {
+  border: 1px solid #38444d;
+  transition: background-color 0.2s;
+  background-color: #192734; /* Slightly different background for cards */
+}
+
+.note-card:hover {
+  background-color: #22303f; /* Hover effect */
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  background-color: #38444d;
+  border-radius: 9999px; /* Use full roundness */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8899a6;
+  font-weight: bold;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.avatar-sm { /* Smaller avatar for replies */
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+}
+
+
+.note-input-area {
+  border-color: #38444d;
+  background-color: transparent; /* Make textarea background transparent */
+}
+.note-input-area:focus {
+  border-color: #1d9bf0;
+  box-shadow: 0 0 0 1px #1d9bf0;
+  outline: none; /* Remove default outline */
+}
+
+.btn-tweet {
+  background-color: #1d9bf0;
+  color: white;
+  border-radius: 9999px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  padding: 0.3rem 1rem; /* Adjusted padding */
+  font-size: 0.9rem; /* Slightly smaller font */
+}
+.btn-tweet:hover:not(:disabled) {
+  background-color: #1a91da;
+}
+.btn-tweet:disabled {
+  background-color: #1a6ea8; /* Use a more distinct disabled color */
+  opacity: 0.6; /* Increase opacity slightly */
+  cursor: not-allowed;
+}
+
+.action-icons i, .action-icons svg {
+  color: #8899a6;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.action-icons .group:hover i, .action-icons .group:hover svg {
+  color: #1d9bf0; /* Twitter blue on hover */
+}
+.action-icons .group:hover span {
+    color: #1d9bf0; /* Also color the count */
+}
+
+.replies-container {
+  border-left: 2px solid #38444d;
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+/* Add specific rounded corners */
+.note-list > :first-child {
+    border-top-left-radius: 0.75rem; /* 12px */
+    border-top-right-radius: 0.75rem;
+}
+.note-list > :last-child {
+    border-bottom-left-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+}
+.note-list > :not(:last-child) {
+    border-bottom: none; /* Avoid double borders */
+}
